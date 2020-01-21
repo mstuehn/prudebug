@@ -1,0 +1,51 @@
+
+Prudebug Version 0.26
+
+(C) Copyright 2011, 2013 by Arctica Technologies
+Written by Steven Anderson
+
+Prudebug is a very small program that was initially intended to be 100-200 lines of code to start/stop the PRU and load a binary in the PRU.
+As I worked through my PRU development project I added several addition features (some I needed for debugging the project, and a few just
+because they seemed nice).  After completing the PRU coding project this program sat unused for about a year before I decided that maybe
+someone else out there needed a PRU debugger.  After all, if you need a hard realtime process and you're using Linux/FreeBSD, a PRU is an easy
+way to go.
+
+THIS PROGRAM HAS VERY LIMITED TESTING - USE AT YOUR OWN RISK.
+I did test the features that I used, but there are many features I didn't need for my project.  I attempted a couple quick tests with the
+unused features, but it would be very easy to miss something.  For example, I only used PRU0 for my coding, so very little testing was done
+with PRU1.  I'm sure the user interface has bugs but I haven't hit them yet....it's easy to miss issues when you know how it's supposed
+to work.  As I continue to add code, I'll try to do a more complete job of testing, but I will continue to use feedback for locating most
+bugs.
+
+
+RELEASE NOTES for prudebug
+---------------------------------------------------------------------
+Version 0.24
+	Improvements:
+
+	Added support for UIO PRUSS driver
+	Moved to dynamic processor selection - user can pick a processor on the command line
+	Fixed watchpoints and breakpoints to support different values on different PRUs
+
+Version 0.25
+	Bug fixes provided by Shoji Suzuki
+		Correction to the QBA instruction decode
+		Fix backspace code for terminals using 0x7f
+		Corrected issue with writing numbers greater than 0x7fffffff to PRU memory with the wr command
+
+Version 0.26
+	updated to work also on FreeBSD
+	Improvements to debugger
+		Add support for HW-Breakpoints
+		Add XFER/LOOP disassembly
+		Introduce debug file which enables more confortable debugging
+	Introduce editline for console input
+
+
+INSTALLATION
+---------------------------------------------------------------------
+To build just run make in the source code directory (make sure you have the correct cross-compiler in place and in the path -
+arm-none-linux-gnueabi-gcc).  The binary is called prudebug.
+
+
+
